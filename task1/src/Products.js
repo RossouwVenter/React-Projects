@@ -45,7 +45,11 @@ render() {
 
     return (
     <div>
-        <ul>{listProducts}</ul>     
+        {listProducts.length > 0 ? (
+        <ul>{listProducts}</ul> 
+        ) : ( 
+        <ul>No Products to display</ul> 
+        )}     
     </div>
     );
 }
