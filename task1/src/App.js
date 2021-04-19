@@ -7,14 +7,26 @@ import UserFrom from './UserForm.js';
 import GitHub from './GitHub.js';
 
 
+// class App extends Component {
+//   render() {
+//     const isValid = true;
+//   return (
+//     <div className="App">
+//     <GitHub />
+//     </div>
+//   );
+//   }
+// }
+
 class App extends Component {
-  render() {
-    const isValid = true;
-  return (
-    <div className="App">
-    <GitHub />
-    </div>
-  );
+
+  render() { 
+    return (
+      <div>
+        <GitHub /> 
+      </div>
+    );
   }
 }
+
 export default App;
