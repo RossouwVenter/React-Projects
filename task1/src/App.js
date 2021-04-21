@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 import Rating from './Rating.js';
 import JumboTronComponent from './JumboTronComponent';
 import UserFrom from './UserForm.js';
-import GitHub from './GitHub.js';
+import GitHub2 from './GitHub2.js';
 
 
 // class App extends Component {
@@ -23,7 +23,7 @@ class App extends Component {
   render() { 
     return (
       <div>
-        <GitHub /> 
+        <GitHub2 /> 
       </div>
     );
   }

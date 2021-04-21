@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+// import React, { useEffect, useState } from 'react';
 import axios from 'axios'; // npm install axios
 import ReactLoading from 'react-loading';
 import Media  from 'react-bootstrap/Media';
 import Form from 'react-bootstrap/Form';
-import FormGroup from 'react-bootstrap';
-import FormControl from 'react-bootstrap';
-import Button from 'react-bootstrap';
-import * as ReactBootstrap from 'react-bootstrap';
+import FormGroup from 'react-bootstrap/FormGroup';
+import FormControl from 'react-bootstrap/FormControl';
+import Button from 'react-bootstrap/Button';
+// import ReactBootstrap from 'react-bootstrap';
 
 
 class GitHub extends Component { 
@@ -18,17 +19,33 @@ class GitHub extends Component {
             searchTerm:'',
             isLoading : false 
         };
+        this.handleChange = this.handleChange.bind(this); 
+        this.handleSubmit = this.handleSubmit.bind(this);
         
     }
+    handleSubmit(e) {
+        e.preventDefault(); 
+        this.setState({
+        isLoading : true 
+        }) 
+        this.getGitHubData(this.state.searchTerm); 
+        }
+    
+    handleChange(e) {
+        this.setState({ searchTerm: e.target.value }); 
+        }
+    
     getGitHubData(_searchTerm){ 
         axios.get("https://api.github.com/search/users?q="+_searchTerm)
-            .then(res => { 
-                this.setState({
-                    isLoading : false, 
-                    data: res.data.items 
-                }) 
-            }); 
+        .then(res => { 
+        this.setState({
+        isLoading : false, 
+        data: res.data.items 
+        }) 
+        console.log(res.data.items);
+        }); 
     } 
+
     render() { 
         const listUsers = this.state.data.map((user) => 
             <Media key={user.id}>
@@ -46,13 +63,27 @@ class GitHub extends Component {
                 </a>
             </Media.Left>
             <Media.Body>
-                <Media.Heading>{user.login}</Media.Heading>
-                <p>Score: { user.score }</p>
+                <h5>{user.login}</h5>
+                <p>Score: {user.score}</p>
             </Media.Body>
             </Media> 
         );
     return (
     <div>
+        <Form inline onSubmit={this.handleSubmit}>
+            <FormGroup controlId="formInlineName"> 
+                <FormControl
+                    type="text"
+                    value={this.state.searchTerm}
+                    placeholder="Enter Search Term"
+                    onChange={this.handleChange}
+                />
+            </FormGroup> 
+            {' '}
+            <Button type="submit">
+                Search
+            </Button>
+        </Form>
         <h3>GitHub Users Results</h3>
         { this.state.isLoading && 
             <ReactLoading type="spinningBubbles" color="#444" />
