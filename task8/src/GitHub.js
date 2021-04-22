@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'; 
 import ReactLoading from 'react-loading';
 import { Media, Form, Button } from 'react-bootstrap';
+// import { Link } from 'react-router';
 
 
 class GitHub extends Component {    
@@ -45,22 +46,17 @@ class GitHub extends Component {
 
     render() { 
         const listUsers = this.state.data.map(user =>             
-            <Media key={user.id}>
-                <a href={user.html_url}>    
-                    <img
-                        width={64}
-                        height={64}
-                        className="mr-3"
-                        src={user.avatar_url}
-                        alt="Generic placeholder"
-                    />
-                </a>
+            <Media key={user.id}> 
+                <Link to={`/github/user/${user.login}/${user.score}`}>
+                    <img width={64} height={64} src={user.avatar_url}
+                    alt="Image"/>
+                </Link>
                 <Media.Body>
-                    <h5>Login: {user.login}</h5>
-                    <p>Id: { user.id }</p>
+                    <h5>{user.login}</h5>
+                    <p>Score: { user.score }</p>
                 </Media.Body>
-            </Media>                     
-        );        
+            </Media> 
+            );        
 
 
         return (
@@ -106,4 +102,4 @@ class GitHub extends Component {
 
     
 }
-export default GitHub;
+export default GitHubUser;
