@@ -3,6 +3,7 @@ import axios from 'axios';
 import ReactLoading from 'react-loading';
 import { Media, Form, Button } from 'react-bootstrap';
 // import { Link } from 'react-router';
+import { Link } from 'react-router-dom'
 
 
 class GitHub extends Component {    
@@ -102,4 +103,4 @@ class GitHub extends Component {
 
     
 }
-export default GitHubUser;
+export default GitHub;
