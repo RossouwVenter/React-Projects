@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from 'firebase/app';
-import  'firebase/firestore';
+// import  'firebase/firestore';
 import { Table, Button, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -16,6 +16,13 @@ class User extends Component {
         this.closeDeleteDialog = this.closeDeleteDialog.bind(this); 
         this.delete = this.delete.bind(this); 
     } 
+
+    openDeleteDialog(user){ 
+        this.setState({ 
+        showDeleteDialog: true,
+        selectedUser: user
+        });
+    }
 
     componentDidMount(){
         firebase.database().ref('/')
@@ -36,12 +43,12 @@ class User extends Component {
         this.props.history.push("/add"); 
     }
     
-    openDeleteDialog(user){ 
-        this.setState({ 
-            showDeleteDialog: true,
-            selectedUser: user
-        }); 
-    }
+    // openDeleteDialog(user){ 
+    //     this.setState({ 
+    //         showDeleteDialog: true,
+    //         selectedUser: user
+    //     }); 
+    // }
 
     delete(e) { 
         firebase.database().ref('/'+this.state.selectedUser.key).remove()

@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import * as reportWebvitals from './reportWebVitals';
+import reportWebVitals from './reportWebVitals';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
-const firebaseConfig = {
+var firebaseConfig = {
   apiKey: "AIzaSyBwHKWvUvquqKjS94J1fqC6KRvrx-WWOak",
   authDomain: "crudproject-6c636.firebaseapp.com",
   databaseURL: "https://crudproject-6c636-default-rtdb.europe-west1.firebasedatabase.app",
@@ -21,4 +21,4 @@ firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 ReactDOM.render(<App />, document.getElementById('root'));
 
-reportWebvitals();
+reportWebVitals();

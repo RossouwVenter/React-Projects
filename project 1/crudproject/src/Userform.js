@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import firebase from 'firebase/app';
-import  'firebase/firestore';
+import firebase from 'firebase';
+// import  'firebase/firestore';
 
 
 class UserForm extends Component {
@@ -41,7 +41,9 @@ render(){
         <h1>{this.title}</h1>
         <Formik    
             enableReinitialize={true}        
-            initialValues={{ username: this.state.username, email: this.state.email }}
+            initialValues={{ 
+                username: this.state.username, 
+                email: this.state.email }}
             validate={values => {
             let errors = {};
             if (!values.email) {
@@ -89,7 +91,7 @@ render(){
                 <span style={{ color:"red", fontWeight: "bold" }}>
                 <ErrorMessage name="email" component="div" />
                 </span>                               
-                <Field type="username" name="username" />
+                <Field type="text" name="username" />
                 <span style={{ color:"red", fontWeight: "bold" }}>
                 <ErrorMessage name="username" component="div" />
                 </span>                

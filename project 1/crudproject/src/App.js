@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import * as firebase from 'firebase';
+import  firebase from 'firebase';
 import User from './User';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import UserForm from './Userform';
 
 class App extends Component {
-  constructor(){
-  super();
-  console.log(firebase);
-  }
+  // constructor(){
+  // super();
+  // console.log(firebase);
+  // }
 
   render() {
   return (
