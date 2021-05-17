@@ -17,21 +17,31 @@ class App extends React.Component {
                 this.setState({errorMessage: err.message})
             }
         );
-    }
+    }    
     
-    
-    // We have to define render!!!
-    render(){
+    renderContent(){
+        // We have to define render!!!
         if (this.state.errorMessage && !this.state.lat){
-            return <div>Error: {this.state.errorMessage}</div>
+            return <div>Error: {this.state.errorMessage}</div>;
         }
 
         if (!this.state.errorMessage && this.state.lat){
-            return <SeasonDisplay lat={this.state.lat} />
+            return <SeasonDisplay lat={this.state.lat} />;
         }
 
-        return <Spinner message="Please accept location reguest"/>
+        return <Spinner message="Please accept location reguest"/>;
     }
+
+
+    // We have to define render!!!
+    render() {
+    return(
+        <div className="border red">
+            {this.renderContent()}
+        </div>
+    )
 }
+}
+
 
 ReactDOM.render(<App />, document.querySelector("#root"));
