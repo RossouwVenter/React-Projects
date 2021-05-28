@@ -26,6 +26,28 @@ const Search = () => {
         // runs code as soon as term changes.
     }, [term]);
 
+    const renderedResults = results.map((result) => {
+        return (
+        <div key={result.pageid} className="item">
+            <div className="right floatedcontent">
+                <a 
+                className="ui button"
+                href={`https://en.wikipedia.org?curid=${result.pageid}`}
+                >
+                    Go
+                </a>
+            </div>
+            <div className="content">
+                <div className="header">
+                    {result.title}
+                </div>
+                <span dangerouslySetInnerHTML={{__html: result.snippet}}></span>
+                {result.snippet}
+            </div>
+        </div>
+        )
+    })
+
     return (
         <div>
             <div className="ui form">
@@ -37,6 +59,7 @@ const Search = () => {
                     className="input" />
                 </div>
             </div>
+            <div className="ui celled list">{renderedResults}</div>
         </div>
     );
 };
